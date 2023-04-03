@@ -1,5 +1,4 @@
 const db = require('../models/db.js');
-
 export const jobController = {};
 
 // GET JOB

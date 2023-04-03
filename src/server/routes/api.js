@@ -1,4 +1,3 @@
-//import express
 import express from 'express';
 import { jobController } from '../controllers/jobController';
 export const jobRouter = express.Router();
