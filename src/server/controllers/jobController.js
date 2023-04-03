@@ -1,4 +1,4 @@
-const db = require('../models/db.js');
+import { db } from '../models/db.js';
 export const jobController = {};
 
 // GET JOB
