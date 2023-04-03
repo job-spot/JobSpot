@@ -10,6 +10,6 @@ authRouter.post('/signin', authController.verifyUser, (req, res) =>
 );
 
 //process signup
-authRouter.post('/signin', authController.createUser, (req, res) =>
+authRouter.post('/signup', authController.createUser, (req, res) =>
   res.status(203).json(res.locals.newUser)
 );
