@@ -106,9 +106,10 @@ jobController.updateJob = (req, res, next) => {
 // DELETE JOB
 // TESTED: DELETE FROM jobs WHERE user_id = 3 RETURNING *
 jobController.deleteJob = (req, res, next) => {
-  const { user_id } = req.body;
-  const sqlQuery = 'DELETE FROM jobs WHERE user_id = $1 RETURNING *';
-  const values = [2];
+  const { user_id, job_id } = req.body;
+  const sqlQuery =
+    'DELETE FROM jobs WHERE user_id = $1 AND job_id = $2 RETURNING *';
+  const values = [user_id, job_id];
   db.query(sqlQuery, values)
     .then((data) => {
       res.locals.deletedJob = data.rows[0];
