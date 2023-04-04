@@ -16,9 +16,9 @@ jobRouter.post('/job', jobController.addJob, (req, res) => {
 
 // Update JOB
 // http://localhost:3000/api/job
-// jobRouter.put('/job', jobController.updateJob, (req, res) => {
-//   return res.status(200).json(res.locals.updatedJob);
-// });
+jobRouter.put('/job', jobController.updateJob, (req, res) => {
+  return res.status(200).json(res.locals.updatedJob);
+});
 
 // DELETE JOB
 // http://localhost:3000/api/job
