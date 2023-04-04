@@ -12,7 +12,7 @@ app.use('/api', jobRouter);
 
 describe('Job routes', () => {
   // testing for GET JOB
-  test('GET /api/job should return a list of jobs for a particular user', async () => {
+  it('GET /api/job should return a list of jobs for a particular user', async () => {
     const job = {
       user_id: 5
     };
@@ -22,7 +22,7 @@ describe('Job routes', () => {
   });
 
   // testing for ADD JOB
-  test('POST /api/job should add a new job for a particular user', async () => {
+  it('POST /api/job should add a new job for a particular user', async () => {
     const job = {
       status: 'applied',
       company: 'Spotify',
@@ -38,7 +38,7 @@ describe('Job routes', () => {
   });
 
   // testing for UPDATE JOB
-  test('PUT /api/job should update an existing job for a particular user', async () => {
+  it('PUT /api/job should update an existing job for a particular user', async () => {
     const job = {
       status: 'offered',
       company: 'Spotify',
@@ -57,7 +57,7 @@ describe('Job routes', () => {
   });
 
   // testing for DELETE JOB
-  test('DELETE /api/job should delete an existing job for a particular user', async () => {
+  it('DELETE /api/job should delete an existing job for a particular user', async () => {
     const job = {
       user_id: 5,
       job_id: 50
