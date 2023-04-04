@@ -5,11 +5,13 @@ export const authRouter = express.Router();
 import { authController } from '../controllers/authController.js';
 
 //process signin
+//http://localhost:3333/auth/signin
 authRouter.post('/signin', authController.verifyUser, (req, res) =>
-  res.status(203).json(res.locals.user)
+  res.status(203).json(res.locals.userId)
 );
 
 //process signup
+//http://localhost:3333/auth/signup
 authRouter.post('/signup', authController.createUser, (req, res) =>
-  res.status(203).json(res.locals.newUser)
+  res.status(203).json(res.locals.newUserId)
 );
