@@ -1,7 +1,7 @@
 import * as React from "react"
 import Login from "./components/Login"
 import Signup from "./components/Signup"
-import "./styles/App.css"
+import "./styles.module.css"
 
 function App() {
   return (

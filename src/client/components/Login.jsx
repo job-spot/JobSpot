@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useInput } from '../Hooks';
+import styles from '../styles/Login.module.css';
 
 
 const Login = () => {
@@ -48,8 +49,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>WELCOME BACK!</h1>
+    <div className={styles.wrapper}>
+      <h1>Log in to view your dashboard!</h1>
       <div>
       <form onSubmit={handleFormSubmit}>
         <div>

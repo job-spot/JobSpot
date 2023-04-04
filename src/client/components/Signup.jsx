@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useInput } from '../Hooks';
+import styles from '../styles/Login.module.css';
 
 const Signup = () => {
   //--------------------------STATES OF SIGNING UP -----------------------------
@@ -46,8 +47,8 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h1>SIGNUP TO GET STARTED!</h1>
+    <div className={styles.wrapper}>
+      <h1>Sign up now to get started!</h1>
       <div>
       <form onSubmit={handleFormSubmit}>
         <div>
