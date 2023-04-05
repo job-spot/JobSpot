@@ -43,7 +43,7 @@ const Login = () => {
           //update userId in state?
           setUserId(res.user_id);
           //navigate to main dashboard
-          navigate('/job');
+          navigate(`/job/${res.user_id}`);
         } else {
           setErrorMessage(res);
           setUsername('');
