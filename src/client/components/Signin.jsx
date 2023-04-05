@@ -13,7 +13,7 @@ const Login = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('submit');
-    fetch(`/signin`, {
+    fetch(`/auth/signin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

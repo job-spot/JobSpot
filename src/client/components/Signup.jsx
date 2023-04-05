@@ -13,7 +13,7 @@ const Signup = () => {
     //Prevent the page reload
     e.preventDefault();
     console.log('submit');
-    fetch(`/signup`, {
+    fetch(`/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
