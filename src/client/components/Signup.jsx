@@ -23,19 +23,6 @@ const Signup = () => {
       },
       body: JSON.stringify({ username, password })
     })
-      // .then((res) => {
-      //   console.log('signup res line 24', res.json());
-      //   if (res.redirected) {
-      //     return (window.location.href = res.url);
-      //   }
-      //   return res.json();
-      // })
-
-      // .then((errorMess) => {
-      //   setErrorMessage(errorMess);
-      //   setUsername('');
-      //   setPassword('');
-      // })
       .then((res) => res.json())
       .then((res) => {
         //if the response obj has a user_id property
@@ -44,7 +31,7 @@ const Signup = () => {
           //update userId in state?
           setUserId(res.user_id);
           //navigate to main dashboard
-          navigate('/job');
+          navigate(`/job/${res.user_id}`);
         } else {
           setErrorMessage(res);
           setUsername('');
