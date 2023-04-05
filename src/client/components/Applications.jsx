@@ -35,7 +35,9 @@ function Applications() {
 
   //make post request here to send back the object of inputs for new application entry
   const addApplication = () => {
-    fetch('/api/job', {
+    // hard coding user_id to test will replace with user_id from auth route
+    formData['user_id'] = 1;
+    fetch('http://localhost:3333/api/job', {
       method: 'POST',
       headers: {
         'Content-Type': 'Application/JSON'
