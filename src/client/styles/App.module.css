@@ -1,0 +1,17 @@
+.App {
+    text-align: center;
+    padding: 2rem;
+}
+
+.logo {
+    width: 350px;
+    padding-bottom: 2rem;
+}
+
+.loginButtons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}

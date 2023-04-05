@@ -1,21 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import Applications from "./Applications"
-import NavBar from "./Navbar";
-import ApplicationNav from "./ApplicationNav";
+import AppTable from "./AppTable";
 
+//conditional logic to render out Applications or AppTable
 function MainDashboard() {
-  const allApps = []
-    for (let i = 0; i < 10; i++) {
-      allApps.push(<Applications />)
-    }
   
   return (
     <div> 
-      <NavBar />   
-      <ApplicationNav />
-      {allApps}
+      <AppTable />   
     </div>
   )
 }
 
-export default MainDashboard
+export default MainDashboard;

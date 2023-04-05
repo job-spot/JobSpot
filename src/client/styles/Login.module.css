@@ -4,50 +4,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     min-height: 100vh;
     min-width: 100vw;
 }
 
 .wrapper h1 {
-    display: flex;
-    font-weight: 200;
+    font-weight: 500;
+    color: var(--green);
     font-style: italic;
 }
 
-.wrapper button {
-    box-shadow: 0 6px 20px 0 rgba(203, 205, 230, 0.37);
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: .5rem;
-    border: 1px solid rgba(0, 0, 0, 0.18);
-    padding: .20rem .70rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    font-size: 1rem;
-    font-weight: 200;
-    text-decoration: none;
-    margin-top: 1.5rem;
-}
-
-.wrapper button:hover {
-    background-color: azure;
-    transition: 150ms;
-    cursor: pointer;
+.wrapper label {
+    color: var(--blue);
+    font-weight: 600;
 }
 
 .wrapper form {
-    background-image: linear-gradient(150deg, #f1eaff77 ,#d1e8ff6b);
-    border-radius: 1rem;
+    border: 1px solid var(--blue);
+    border-radius: .5rem;
     padding: 3rem;
-    margin-top: .5rem;
+    text-align: right;
 }
 
 .wrapper input:focus {
     outline: none;
 }
 
+
 .wrapper input {
-    border-radius: 10px;
+    border: 1px solid var(--blue);
+    border-radius: .25rem;
     padding: .5rem;
+    margin-left: .5rem;
     margin-top: .5rem;
+    width: 10rem;
+    background-color:#89c8ff23;
+}
+
+.buttonWrap {
+    margin: 2rem 0 0 0;
+    text-align: center;
 }
