@@ -56,7 +56,6 @@ function Applications() {
     'Company',
     'Position',
     'Salary',
-    'Link',
     'Applied',
     'Phone Interview',
     'Technical Interview',
@@ -103,8 +102,6 @@ function Applications() {
                       />
                     ) : header === 'Salary' ? (
                       <input name="salary" type="text" onChange={handleInput} />
-                    ) : header === 'Link' ? (
-                      <input name="link" type="text" onChange={handleInput} />
                     ) : header === 'Applied' ? (
                       <DatePicker
                         name="date_applied"

@@ -9,7 +9,6 @@ function AppTable() {
     'Company',
     'Position',
     'Salary',
-    'Link',
     'Applied',
     'Phone Interview',
     'Technical Interview',
@@ -50,15 +49,6 @@ function AppTable() {
       },
       //! hard-coded - need to replace with dynamic data from user input
       body: JSON.stringify({
-        status: 'Offered',
-        company: 'Jen Inc.',
-        position: 'Frontend Software Engineer',
-        salary: 11111111,
-        link: 'www.linkedin.com',
-        date_applied: '2023-03-30',
-        phone_interview_date: '2023-04-05',
-        technical_interview_date: '2023-04-12',
-        comments: 'this works!',
         user_id: 1,
         job_id: 1
       })
@@ -86,7 +76,6 @@ function AppTable() {
                 <td>{row.company}</td>
                 <td>{row.position}</td>
                 <td>${row.salary}</td>
-                <td>{row.link}</td>
                 <td>{row.date_applied}</td>
                 <td>{row.phone_interview_date}</td>
                 <td>{row.technical_interview_date}</td>
