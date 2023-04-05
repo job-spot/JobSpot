@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/JOB-SPOT.png'
 import MainDashboard from './components/MainDashboard'
-import Applications from "./components/Applications"
-import AppTable from "./components/AppTable";
 import "./styles.module.css"
 import styles from './styles/App.module.css'
 import Signup from "./components/Signup"
@@ -16,15 +14,7 @@ function App() {
   const [savedApplications, setSavedApplications] = useState([]);
 
   const render = () => {
-    if (rendered === 'add') {
-      return <Applications />
-    } else if (rendered === 'job') {
-      return savedApplications.length ? ( 
-        <AppTable savedApplications={savedApplications} setSavedApplications={setSavedApplications}/>
-      ) : (
-        <p>Go add your applications!</p>
-      );
-    } else if (rendered === 'signup') {
+    if (rendered === 'signup') {
       return <Signup />
     } else if (rendered === 'signin') {
       return <Signin />
@@ -42,10 +32,6 @@ function App() {
         <div className={styles.loginButtons}>
           <button onClick={() => setRendered('dashboard')}>HOME</button>
           <text>|</text>
-          <button onClick={() => setRendered('job')}>DASHBOARD</button>
-          <text>|</text>
-          <button onClick={() => setRendered('add')}>APPLICATION</button>
-          <text>|</text>
           <button onClick={() => setRendered('signup')}>SIGN UP</button>
           <text>|</text>
           <button onClick={() => setRendered('signin')}>SIGN IN</button>
@@ -53,7 +39,6 @@ function App() {
       </div>
       <div className={styles.rendered}>
         {render()}
-        <AppTable />
       </div>
     </div>
   )

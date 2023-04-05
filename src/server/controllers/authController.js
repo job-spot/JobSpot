@@ -8,7 +8,7 @@ authController.verifyUser = async (req, res, next) => {
   const { username, password } = req.body;
   //if there are invalid inputs, return err message to global error handler
   if (!username || !password) {
-    return next({ message: 'missing username or password' });
+    return next({ message: { err: 'missing username or password' } });
   }
 
   try {
@@ -23,11 +23,11 @@ authController.verifyUser = async (req, res, next) => {
 
     //if user is verified, return user Id
     if (verified) {
-      res.locals.userId = user.rows[0].user_id;
+      res.locals.userId = { user_id: user.rows[0].user_id };
       // res.redirect('/')
       return next();
     } else {
-      return next({ message: 'incorrect username or password' });
+      return next({ message: { err: 'incorrect password' } });
     }
   } catch (err) {
     return next({
@@ -38,11 +38,12 @@ authController.verifyUser = async (req, res, next) => {
 };
 
 authController.createUser = async (req, res, next) => {
+  console.log('hi create user, reqbody:', req.body);
   const { username, password } = req.body;
 
   //if invalid inputs return error
   if (!username || !password) {
-    return next({ message: 'missing username or password' });
+    return next({ message: { err: 'missing username or password' } });
   }
 
   try {

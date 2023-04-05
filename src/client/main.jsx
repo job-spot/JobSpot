@@ -5,6 +5,7 @@ import App from './App'
 import AppTable from './components/AppTable';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
+import SignedInDashboard from './components/SignedInDashboard'
 
 const router = createBrowserRouter([
   { 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   { 
     path: '/job', 
-    element: <AppTable /> 
+    element: <SignedInDashboard /> 
   },
 ]);
 
