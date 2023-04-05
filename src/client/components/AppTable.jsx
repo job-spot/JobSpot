@@ -70,16 +70,29 @@ function AppTable() {
             </tr>
           </thead>
           <tbody>
+            {/* if cell in each column exists, render it, else render an empty cell */}
             {allJobs.map((row) => (
               <tr>
-                <td>{row.status}</td>
-                <td>{row.company}</td>
-                <td>{row.position}</td>
-                <td>${row.salary}</td>
-                <td>{row.date_applied}</td>
-                <td>{row.phone_interview_date}</td>
-                <td>{row.technical_interview_date}</td>
-                <td>{row.comments}</td>
+                <td>{row.status ? row.status : ''}</td>
+                <td>{row.company ? row.company : ''}</td>
+                <td>{row.position ? row.position : ''}</td>
+                <td>${row.salary ? row.salary : ''}</td>
+                <td>
+                  {row.date_applied
+                    ? String(row.date_applied).slice(0, 10)
+                    : ''}
+                </td>
+                <td>
+                  {row.phone_interview_date
+                    ? String(row.phone_interview_date).slice(0, 10)
+                    : ''}
+                </td>
+                <td>
+                  {row.technical_interview_date
+                    ? String(row.technical_interview_date).slice(0, 10)
+                    : ''}
+                </td>
+                <td>{row.comments ? row.comments : ''}</td>
                 <td>
                   <button onClick={(e) => handleUpdate(e)} type="button">
                     ✅
