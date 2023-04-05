@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <Login />
   },
   { path: '/signup', element: <Signup /> },
-  { path: '/job', element: <AppTable /> }
+  { path: '/job', element: <Applications /> }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

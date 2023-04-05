@@ -13,7 +13,7 @@ function AppTable() {
     'Phone Interview',
     'Technical Interview',
     'Comments',
-    'Delete'
+    'Save / Delete'
   ]
 
   const data = [
@@ -23,10 +23,11 @@ function AppTable() {
       position: '',
       salary: '',
       link: '',
-      applied: '',
-      phoneInterview: '',
-      technicalInterview: '',
+      date_applied: '',
+      phone_interview_date: '',
+      technical_interview_date: '',
       comments: '',
+      user_id: ''
     }
   ]
   
@@ -48,11 +49,11 @@ function AppTable() {
             <td>{row.position}</td>
             <td>{row.salary}</td>
             <td>{row.link}</td>
-            <td>{row.applied}</td>
-            <td>{row.phoneInterview}</td>
-            <td>{row.technicalInterview}</td>
+            <td>{row.date_applied}</td>
+            <td>{row.phone_interview_date}</td>
+            <td>{row.technical_interview_date}</td>
             <td>{row.comments}</td>
-            <td><button>ⓧ</button></td>
+            <td><button>✅</button><text>/</text><button>❌</button></td>
           </tr>
         )}
       </tbody>

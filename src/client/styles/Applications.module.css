@@ -32,7 +32,6 @@ html, body {
     border: 1px solid var(--blue);
     border-radius: .5rem;
     padding: 3rem;
-    text-align: right;
 }
 
 .wrapper input:focus {
@@ -41,16 +40,46 @@ html, body {
 
 
 .wrapper input {
-    border: 1px solid var(--blue);
+    border: none;
     border-radius: .25rem;
     padding: .5rem;
     margin-left: .5rem;
     margin-top: .5rem;
     width: 10rem;
-    background-color:#89c8ff23;
+}
+
+.wrapper select {
+    border: none;
+    outline: none;
+}
+
+.wrapper textarea {
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 .buttonWrap {
     margin: 2rem 0 0 0;
     text-align: center;
 }
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    border-color: var(--blue);
+  }
+  
+  .table th, td{
+    width: 6rem;
+    font-size: .75rem;
+  }
+  
+  .table th {
+    background-color: var(--ltblue);
+    font-weight: 600;
+  }
+  
+  .table tr {
+    height: 2rem;
+  }
