@@ -6,6 +6,7 @@ import logo from '../../assets/JOB-SPOT.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles.module.css';
 
+
 function SignedInDash(props) {
   const [rendered, setRendered] = useState('job');
   const [savedApplications, setSavedApplications] = useState([]);
@@ -13,6 +14,7 @@ function SignedInDash(props) {
   const navigate = useNavigate();
   console.log(props);
 
+  console.log("userId", signedInUserId);
   const render = () => {
     if (rendered === 'add') {
       return <Applications userId={props.userId} />;

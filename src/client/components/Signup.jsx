@@ -23,19 +23,6 @@ const Signup = (props) => {
       },
       body: JSON.stringify({ username, password })
     })
-      // .then((res) => {
-      //   console.log('signup res line 24', res.json());
-      //   if (res.redirected) {
-      //     return (window.location.href = res.url);
-      //   }
-      //   return res.json();
-      // })
-
-      // .then((errorMess) => {
-      //   setErrorMessage(errorMess);
-      //   setUsername('');
-      //   setPassword('');
-      // })
       .then((res) => res.json())
       .then((res) => {
         //if the response obj has a user_id property
