@@ -4,7 +4,7 @@ export const jobController = {};
 // GET JOB
 // TESTED: 'SELECT * FROM jobs WHERE user_id = 1'
 jobController.getJob = (req, res, next) => {
-  const { user_id } = req.body;
+  const { user_id } = req.params;
   const sqlQuery = 'SELECT * FROM jobs WHERE user_id = $1';
   const values = [user_id];
   db.query(sqlQuery, values)
@@ -12,12 +12,11 @@ jobController.getJob = (req, res, next) => {
       res.locals.getJobs = data.rows;
       return next();
     })
-    .catch(
-      (err) => console.log('error in get request: ', err)
-      // next({
-      //   log: 'error caught jobController.getJob middleware',
-      //   message: { err }
-      // })
+    .catch((err) =>
+      next({
+        log: 'error caught jobController.getJob middleware',
+        message: { err }
+      })
     );
 };
 
@@ -51,7 +50,7 @@ jobController.addJob = (req, res, next) => {
   db.query(sqlQuery, values)
     .then((data) => {
       res.locals.newJob = data.rows[0];
-      console.log(res.locals.newJob)
+      console.log(res.locals.newJob);
       return next();
     })
     .catch((err) =>

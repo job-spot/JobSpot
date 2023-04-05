@@ -35,7 +35,7 @@ function Applications() {
 
   //make post request here to send back the object of inputs for new application entry
   const addApplication = () => {
-    // hard coding user_id to test will replace with user_id from auth route
+    //! hard coded - need to replace user_id
     formData['user_id'] = 1;
     fetch('http://localhost:3333/api/job', {
       method: 'POST',
@@ -44,9 +44,11 @@ function Applications() {
       },
       body: JSON.stringify(formData)
     })
-      .then((res) => res.json())
-      .then((data) => console.log('data in adding new application: ', data))
-      .catch((err) => console.log('error in adding new application: ', err));
+      .then((response) => response.json())
+      .then((data) => console.log('data for adding new application: ', data))
+      .catch((error) =>
+        console.log('error in adding new application: ', error)
+      );
   };
 
   const headers = [
@@ -54,7 +56,6 @@ function Applications() {
     'Company',
     'Position',
     'Salary',
-    'Link',
     'Applied',
     'Phone Interview',
     'Technical Interview',
@@ -101,8 +102,6 @@ function Applications() {
                       />
                     ) : header === 'Salary' ? (
                       <input name="salary" type="text" onChange={handleInput} />
-                    ) : header === 'Link' ? (
-                      <input name="link" type="text" onChange={handleInput} />
                     ) : header === 'Applied' ? (
                       <DatePicker
                         name="date_applied"

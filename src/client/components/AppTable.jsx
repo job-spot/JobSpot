@@ -1,112 +1,114 @@
-import React from "react"
-import styles from '../styles/dashboard.module.css'
+import React, { useState, useEffect } from 'react';
+import styles from '../styles/dashboard.module.css';
 
 function AppTable() {
+  const [allJobs, setAllJobs] = useState([]);
 
   const headers = [
     'Status',
     'Company',
     'Position',
     'Salary',
-    'Link',
     'Applied',
     'Phone Interview',
     'Technical Interview',
     'Comments',
     'Save / Delete'
-  ]
+  ];
 
-  const testdata = [
-    {
-      status: '',
-      company: '',
-      position: '',
-      salary: '',
-      link: '',
-      date_applied: '',
-      phone_interview_date: '',
-      technical_interview_date: '',
-      comments: '',
-      user_id: ''
-    }
-  ]
+  useEffect(() => {
+    const getData = () => {
+      //! hard-coded user_id
+      const user_id = 1;
+      fetch(`http://localhost:3333/api/job/${user_id}`)
+        .then((response) => response.json())
+        .then((data) => setAllJobs(data))
+        .catch((error) => console.log('error in getting application: ', error));
+    };
+    getData();
+  }, []);
+
   const handleDelete = (e) => {
     e.preventDefault();
-    fetch('/api/jobs', {
-    method: 'DELETE',
+    fetch('http://localhost:3333/api/job', {
+      method: 'DELETE',
+      //! hard-coded - need to replace with user_id and job_id
+      body: JSON.stringify({ user_id: 1, job_id: 1 })
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  }
+      .then((response) => response.json())
+      .then((data) => console.log('data for deleting application: ', data))
+      .catch((error) => console.log('error in deleting application: ', error));
+  };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch('/api/jobs', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      status: 'Applied',
-      company: 'Jen Inc.',
-      position: 'Software Engineer',
-      salary: 999999999,
-      date_applied: '2022-03-30',
-      phone_interview_date: '2022-04-05',
-      technical_interview_date: '2022-04-12',
-      comments: 'how to get this to work??',
-      user_id: 123,
+    fetch('http://localhost:3333/api/job', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      //! hard-coded - need to replace with dynamic data from user input
+      body: JSON.stringify({
+        user_id: 1,
+        job_id: 1
+      })
     })
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  }
-  
+      .then((response) => response.json())
+      .then((data) => console.log('data for updating application: ', data))
+      .catch((error) => console.log('error in updating application: ', error));
+  };
+
   return (
     <div className={styles.outer}>
       <div className={styles.wrapper}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {headers.map((heading) => 
-              <th>{heading}</th>
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {testdata.map((row) => 
+        <table className={styles.table}>
+          <thead>
             <tr>
-              <td>{row.status}</td>
-              <td>{row.company}</td>
-              <td>{row.position}</td>
-              <td>{row.salary}</td>
-              <td>{row.link}</td>
-              <td>{row.date_applied}</td>
-              <td>{row.phone_interview_date}</td>
-              <td>{row.technical_interview_date}</td>
-              <td>{row.comments}</td>
-              <td>
-                <button onClick={(e) => handleUpdate(e)} type='button'>✅</button>
-                <text>/</text>
-                <button onClick={(e) => handleDelete(e)} type='button'>❌</button>
-              </td>
+              {headers.map((heading) => (
+                <th>{heading}</th>
+              ))}
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {/* if cell in each column exists, render it, else render an empty cell */}
+            {allJobs.map((row) => (
+              <tr>
+                <td>{row.status ? row.status : ''}</td>
+                <td>{row.company ? row.company : ''}</td>
+                <td>{row.position ? row.position : ''}</td>
+                <td>${row.salary ? row.salary : ''}</td>
+                <td>
+                  {row.date_applied
+                    ? String(row.date_applied).slice(0, 10)
+                    : ''}
+                </td>
+                <td>
+                  {row.phone_interview_date
+                    ? String(row.phone_interview_date).slice(0, 10)
+                    : ''}
+                </td>
+                <td>
+                  {row.technical_interview_date
+                    ? String(row.technical_interview_date).slice(0, 10)
+                    : ''}
+                </td>
+                <td>{row.comments ? row.comments : ''}</td>
+                <td>
+                  <button onClick={(e) => handleUpdate(e)} type="button">
+                    ✅
+                  </button>
+                  <text>/</text>
+                  <button onClick={(e) => handleDelete(e)} type="button">
+                    ❌
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default AppTable;

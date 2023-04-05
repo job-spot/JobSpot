@@ -4,7 +4,7 @@ import { jobController } from '../controllers/jobController.js';
 
 // GET JOB
 // http://localhost:3333/api/job
-jobRouter.get('/job', jobController.getJob, (req, res) => {
+jobRouter.get('/job/:user_id', jobController.getJob, (req, res) => {
   return res.status(200).json(res.locals.getJobs);
 });
 
