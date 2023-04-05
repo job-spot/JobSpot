@@ -7,33 +7,36 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function Applications() {
   const [startDate, setStartDate] = useState(new Date());
+  const [formData, setFormData] = useState({});
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('submit');
-    fetch(`/job`, {
+    const inputs = querySelectorAll('input, select, textarea')
+    addApplication();
+  };
+
+    //   status,
+    //   company,
+    //   position,
+    //   salary,
+    //   date_applied,
+    //   phone_interview_date,
+    //   technical_interview_date,
+    //   comments,
+    //   user_id
+    // }
+
+  //make post request here to send back the object of inputs for new application entry
+  const addApplication = () => {
+    fetch(`/api/job`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({}) //<------object
     })
-      .then((res) => {
-        console.log(res);
-        if (res.redirected) {
-          return (window.location.href = res.url);
-        }
-        return res.json();
-      })
-      .then((errorMess) => {
-        setErrorMessage(errorMess);
-        setUsername('');
-        setPassword('');
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+  }
 
   const headers = [
     'Status',
@@ -49,7 +52,6 @@ function Applications() {
 
   return (
     <div className={styles.wrapper}> 
-      <h1>Add new application!</h1>
       <div>
       <form onSubmit={handleFormSubmit}>
         <table className={styles.table}>

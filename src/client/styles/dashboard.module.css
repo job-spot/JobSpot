@@ -1,8 +1,16 @@
-.wrapper {
+.outer {
+  margin-top: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1rem 2rem;
+}
+
+.wrapper {
+  margin: .5rem;
+  background-color: white;
+  border: 1px solid var(--blue);
+  border-radius: .5rem;
+  padding: 2rem;
 }
 
 .table {
@@ -12,7 +20,7 @@
 
 .table th, td{
   border: 1px solid var(--font);
-  width: 6rem;
+  width: 15rem;
   font-size: .75rem;
 }
 

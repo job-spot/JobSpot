@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    margin-top: 4vh;
+    justify-content: space-between;
+}
+
+.wrapper img {
+    width: 250px;
+}
+
+.left {
+    padding: 10rem 5rem 10rem 15rem;
+    text-align: left;
+}
+
+.right {
+    padding: 10rem 10rem 10rem 0;
+    text-align: left;
+}

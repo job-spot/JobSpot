@@ -1,17 +1,11 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
 .wrapper {
-    background-color: var(--ltblue);
     display: flex;
     font-weight: 400;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 2rem;
     min-height: 100vh;
     min-width: 100vw;
 }

@@ -5,6 +5,10 @@
     color:#2d2d2d;
 }
 
+body {
+    background-color: var(--ltblue);
+}
+
 :root {
     --red: #EA585E;
     --orange: #ff8741;

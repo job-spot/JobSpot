@@ -1,25 +1,13 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 
 .wrapper {
-    background-color: var(--ltblue);
     display: flex;
     font-weight: 400;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 8vh;
     align-items: center;
     text-align: center;
     min-height: 100vh;
     min-width: 100vw;
-}
-
-.wrapper h1 {
-    font-weight: 500;
-    color: var(--blue);
-    font-style: italic;
 }
 
 .wrapper label {
