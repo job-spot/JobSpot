@@ -1,20 +1,18 @@
-import React, { useState, useInput } from 'react';
-import DatePicker, { setDefaultLocale } from 'react-datepicker';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 import styles from '../styles/Applications.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function Applications() {
-  const [startApplied, setApplied] = useState(new Date());
-  const [startPhone, setPhone] = useState(new Date());
-  const [startTech, setTech] = useState(new Date());
   const [formData, setFormData] = useState({});
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     addApplication();
+    console.log('formData', formData);
   };
 
-  const handleComments = (e) => {
+  const handleInput = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
@@ -27,12 +25,20 @@ function Applications() {
     }));
   };
 
+  const handleDateChange = ({ name, value }) => {
+    const dateValue = new Date(value);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: dateValue
+    }));
+  };
+
   //make post request here to send back the object of inputs for new application entry
   const addApplication = () => {
     fetch('/api/job', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'Application/JSON'
       },
       body: JSON.stringify(formData)
     })
@@ -77,26 +83,58 @@ function Applications() {
                       <textarea
                         name="comments"
                         rows="1"
-                        onChange={handleComments}
+                        onChange={handleInput}
                       ></textarea>
+                    ) : header === 'Company' ? (
+                      <input
+                        name="company"
+                        type="text"
+                        onChange={handleInput}
+                      />
+                    ) : header === 'Position' ? (
+                      <input
+                        name="position"
+                        type="text"
+                        onChange={handleInput}
+                      />
+                    ) : header === 'Salary' ? (
+                      <input name="salary" type="text" onChange={handleInput} />
+                    ) : header === 'Link' ? (
+                      <input name="link" type="text" onChange={handleInput} />
                     ) : header === 'Applied' ? (
                       <DatePicker
-                        selected={startApplied}
-                        onChange={(date) => setApplied(date)}
+                        name="date_applied"
+                        selected={formData['date_applied']}
+                        onChange={(date) =>
+                          handleDateChange({
+                            name: 'date_applied',
+                            value: date
+                          })
+                        }
                       />
                     ) : header === 'Phone Interview' ? (
                       <DatePicker
-                        selected={startPhone}
-                        onChange={(date) => setPhone(date)}
+                        name="phone_interview_date"
+                        selected={formData['phone_interview_date']}
+                        onChange={(date) =>
+                          handleDateChange({
+                            name: 'phone_interview_date',
+                            value: date
+                          })
+                        }
                       />
                     ) : header === 'Technical Interview' ? (
                       <DatePicker
-                        selected={startTech}
-                        onChange={(date) => setTech(date)}
+                        name="technical_interview_date"
+                        selected={formData['technical_interview_date']}
+                        onChange={(date) =>
+                          handleDateChange({
+                            name: 'technical_interview_date',
+                            value: date
+                          })
+                        }
                       />
-                    ) : (
-                      <input type="text" />
-                    )}
+                    ) : null}
                   </td>
                 </tr>
               ))}
