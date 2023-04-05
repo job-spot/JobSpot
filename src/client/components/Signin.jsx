@@ -3,12 +3,12 @@ import { useInput } from '../Hooks';
 import styles from '../styles/Login.module.css';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Signin = (props) => {
   //--------------------------STATES OF LOGGING IN -----------------------------
   const [username, [setUsername, userNameOnChange]] = useInput('');
   const [password, [setPassword, passwordOnChange]] = useInput('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const [userId, setUserId] = useState(null);
+  //const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   //----------------------------FORM SUMISSION---------------------------------
@@ -22,28 +22,13 @@ const Login = () => {
       },
       body: JSON.stringify({ username, password })
     })
-      // .then((res) => {
-      //   console.log(res);
-      //   if (res.redirected) {
-      //     return (window.location.href = res.url);
-      //   }
-      //   return res.json();
-      // })
-      // .then((errorMess) => {
-      //   setErrorMessage(errorMess);
-      //   setUsername('');
-      //   setPassword('');
-      // })
       .then((res) => res.json())
       .then((res) => {
         //if the response obj has a user_id property
         console.log(res);
         if (res.hasOwnProperty('user_id')) {
-          console.log('hi from inside if res  has property:', res.user_id);
-          //update userId in state?
-          setUserId(res.user_id);
-          //navigate to main dashboard
-          navigate(`/job/${res.user_id}`);
+          props.setUserId(res.user_id);
+          props.setRendered('signedIndashboard');
         } else {
           setErrorMessage(res);
           setUsername('');
@@ -87,4 +72,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Signin;

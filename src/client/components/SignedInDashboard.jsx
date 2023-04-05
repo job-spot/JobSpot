@@ -7,22 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import '../styles.module.css';
 
 
-function SignedInDash() {
+function SignedInDash(props) {
   const [rendered, setRendered] = useState('job');
   const [savedApplications, setSavedApplications] = useState([]);
-  const [userId, setUserId] = useState(null);
+  //const [userId, setUserId] = useState(currentId);
   const navigate = useNavigate();
-  const searchParams = new URLSearchParams(location.search);
-  const signedInUserId = searchParams.get('userId');
+  console.log(props);
 
   console.log("userId", signedInUserId);
   const render = () => {
     if (rendered === 'add') {
-      return <Applications user_id={signedInUserId}/>;
+      return <Applications userId={props.userId} />;
     } else if (rendered === 'job') {
       return savedApplications.length ? (
         <AppTable
-          user_id={signedInUserId}
+          userId={props.userId}
           savedApplications={savedApplications}
           setSavedApplications={setSavedApplications}
         />
@@ -49,8 +48,9 @@ function SignedInDash() {
           <text>|</text>
           <button
             onClick={() => {
-              setUserId(null);
-              navigate('/');
+              props.setUserId(null);
+              props.setRendered('dashboard');
+              //navigate('/');
             }}
           >
             SIGN OUT
