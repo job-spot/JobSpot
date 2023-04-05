@@ -2,4 +2,46 @@
 
 * {
     font-family: 'Montserrat', sans-serif;
+    color:#2d2d2d;
 }
+
+body {
+    background-color: var(--ltblue);
+}
+
+:root {
+    --red: #EA585E;
+    --orange: #ff8741;
+    --yellow: #ffd94e;
+    --green: #aee46d;
+    --blue: #64a6e0;
+    --ltblue: #89c8ff23;
+    --purple: #8e51d8;
+    --pink: #e771bc;
+    --font: #626262;
+}
+
+button {
+    border-radius: .25rem;
+    border: 1px solid var(--blue);
+    color: var(--font);
+    background-color: white;
+    padding: .25rem .75rem;
+    margin: .15rem;
+    font-size: .8rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: var(--ltblue);
+    transition: 150ms;
+    cursor: pointer;
+}
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; color:var(--font)}
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
