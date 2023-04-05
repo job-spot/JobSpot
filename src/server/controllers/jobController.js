@@ -51,6 +51,7 @@ jobController.addJob = (req, res, next) => {
   db.query(sqlQuery, values)
     .then((data) => {
       res.locals.newJob = data.rows[0];
+      console.log(res.locals.newJob)
       return next();
     })
     .catch((err) =>
