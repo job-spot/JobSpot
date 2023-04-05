@@ -24,6 +24,7 @@ authController.verifyUser = async (req, res, next) => {
     //if user is verified, return user Id
     if (verified) {
       res.locals.userId = user.rows[0].user_id;
+      // res.redirect('/')
       return next();
     } else {
       return next({ message: 'incorrect username or password' });
@@ -55,6 +56,7 @@ authController.createUser = async (req, res, next) => {
 
     //return userId stored in DB
     res.locals.newUserId = newUser.rows[0];
+    // res.redirect('/')
     return next();
   } catch (err) {
     return next({

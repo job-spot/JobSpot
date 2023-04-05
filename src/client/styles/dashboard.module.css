@@ -1,0 +1,46 @@
+.outer {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  margin: .5rem;
+  background-color: white;
+  border: 1px solid var(--blue);
+  border-radius: .5rem;
+  padding: 2rem;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th, td{
+  border: 1px solid var(--font);
+  width: 15rem;
+  font-size: .75rem;
+}
+
+.table th {
+  background-color: var(--ltblue);
+  font-weight: 600;
+}
+
+.table tr {
+  height: 2rem;
+}
+
+.table button {
+  font-size: 1rem;
+  border: none;
+  color: #a72020;
+}
+
+.table button:hover {
+  background-color: #fff;
+  color: var(--red);
+}
+  
