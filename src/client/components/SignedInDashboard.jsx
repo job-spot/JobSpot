@@ -29,9 +29,9 @@ function SignedInDash() {
         </p>
       );
     } else if (rendered === 'add') {
-      return <Applications />;
+      return <Applications user_id={userId}/>;
     } else if (rendered === 'job') {
-      return <AppTable />;
+      return <AppTable user_id={userId}/>;
     } else {
       return null;
     }

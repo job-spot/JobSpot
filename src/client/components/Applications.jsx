@@ -36,7 +36,7 @@ function Applications() {
   //make post request here to send back the object of inputs for new application entry
   const addApplication = () => {
     //! hard coded - need to replace user_id
-    formData['user_id'] = 1;
+    formData['user_id'] = props.user_id;
     fetch('http://localhost:3333/api/job', {
       method: 'POST',
       headers: {

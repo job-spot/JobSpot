@@ -19,7 +19,7 @@ function AppTable() {
   useEffect(() => {
     const getData = () => {
       //! hard-coded user_id
-      const user_id = 1;
+      const user_id = props.user_id;
       fetch(`http://localhost:3333/api/job/${user_id}`)
         .then((response) => response.json())
         .then((data) => setAllJobs(data))
@@ -33,7 +33,7 @@ function AppTable() {
     fetch('http://localhost:3333/api/job', {
       method: 'DELETE',
       //! hard-coded - need to replace with user_id and job_id
-      body: JSON.stringify({ user_id: 1, job_id: 1 })
+      body: JSON.stringify({ user_id: props.user_id, job_id: 1 })
     })
       .then((response) => response.json())
       .then((data) => console.log('data for deleting application: ', data))
@@ -49,7 +49,7 @@ function AppTable() {
       },
       //! hard-coded - need to replace with dynamic data from user input
       body: JSON.stringify({
-        user_id: 1,
+        user_id: props.user_id,
         job_id: 1
       })
     })
