@@ -3,12 +3,12 @@ import { useInput } from '../Hooks';
 import styles from '../styles/Login.module.css';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+const Signup = (props) => {
   //--------------------------STATES OF SIGNING UP -----------------------------
   const [username, [setUsername, userNameOnChange]] = useInput('');
   const [password, [setPassword, passwordOnChange]] = useInput('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const [userId, setUserId] = useState(null);
+  //const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   //----------------------------FORM SUMISSION---------------------------------
@@ -40,11 +40,14 @@ const Signup = () => {
       .then((res) => {
         //if the response obj has a user_id property
         if (res.hasOwnProperty('user_id')) {
-          console.log(res.user_id);
+          //console.log(res.user_id);
           //update userId in state?
-          setUserId(res.user_id);
+          console.log();
+          props.setUserId(res.user_id);
+
           //navigate to main dashboard
-          navigate('/job');
+          props.setRendered('signedIndashboard');
+          //navigate('/job');
         } else {
           setErrorMessage(res);
           setUsername('');

@@ -6,18 +6,20 @@ import logo from '../../assets/JOB-SPOT.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles.module.css';
 
-function SignedInDash() {
+function SignedInDash(props) {
   const [rendered, setRendered] = useState('job');
   const [savedApplications, setSavedApplications] = useState([]);
-  const [userId, setUserId] = useState(null);
+  //const [userId, setUserId] = useState(currentId);
   const navigate = useNavigate();
+  console.log(props);
 
   const render = () => {
     if (rendered === 'add') {
-      return <Applications />;
+      return <Applications userId={props.userId} />;
     } else if (rendered === 'job') {
       return savedApplications.length ? (
         <AppTable
+          userId={props.userId}
           savedApplications={savedApplications}
           setSavedApplications={setSavedApplications}
         />
@@ -28,10 +30,6 @@ function SignedInDash() {
           Go add your applications to view your dashboard!
         </p>
       );
-    } else if (rendered === 'add') {
-      return <Applications />;
-    } else if (rendered === 'job') {
-      return <AppTable />;
     } else {
       return null;
     }
@@ -48,8 +46,9 @@ function SignedInDash() {
           <text>|</text>
           <button
             onClick={() => {
-              setUserId(null);
-              navigate('/');
+              props.setUserId(null);
+              props.setRendered('dashboard');
+              //navigate('/');
             }}
           >
             SIGN OUT

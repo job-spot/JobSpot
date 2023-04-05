@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/dashboard.module.css';
 
-function AppTable() {
+function AppTable({ userId }) {
+  console.log('userId');
   const [allJobs, setAllJobs] = useState([]);
-
   const headers = [
     'Status',
     'Company',
@@ -18,9 +18,7 @@ function AppTable() {
 
   useEffect(() => {
     const getData = () => {
-      //! hard-coded user_id
-      const user_id = 1;
-      fetch(`http://localhost:3333/api/job/${user_id}`)
+      fetch(`http://localhost:3333/api/job/${userId}`)
         .then((response) => response.json())
         .then((data) => setAllJobs(data))
         .catch((error) => console.log('error in getting application: ', error));
@@ -30,10 +28,9 @@ function AppTable() {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3333/api/job', {
+    fetch('http://localhost:3333/api/job/', {
       method: 'DELETE',
-      //! hard-coded - need to replace with user_id and job_id
-      body: JSON.stringify({ user_id: 1, job_id: 1 })
+      body: JSON.stringify({ user_id: userId, job_id: 1 })
     })
       .then((response) => response.json())
       .then((data) => console.log('data for deleting application: ', data))
@@ -42,14 +39,14 @@ function AppTable() {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3333/api/job', {
+    fetch('http://localhost:3333/api/job/', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       //! hard-coded - need to replace with dynamic data from user input
       body: JSON.stringify({
-        user_id: 1,
+        user_id: userId,
         job_id: 1
       })
     })

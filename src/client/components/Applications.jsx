@@ -3,9 +3,10 @@ import DatePicker from 'react-datepicker';
 import styles from '../styles/Applications.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Applications() {
+function Applications({ userId }) {
+  //! hard coded - need to replace user_id
+  console.log('from app', userId);
   const [formData, setFormData] = useState({});
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     addApplication();
@@ -35,12 +36,11 @@ function Applications() {
 
   //make post request here to send back the object of inputs for new application entry
   const addApplication = () => {
-    //! hard coded - need to replace user_id
-    formData['user_id'] = 1;
-    fetch('http://localhost:3333/api/job', {
+    formData['user_id'] = userId;
+    fetch('http://localhost:3333/api/job/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'Application/JSON'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
     })
