@@ -23,6 +23,7 @@ jobController.getJob = (req, res, next) => {
 // ADD JOB
 // TESTED: 'INSERT INTO jobs (status, company, position, salary, date_applied, phone_interview_date, technical_interview_date, comments) VALUES('applied', 'walmart', 'frontend software engineeer', '170000', '2023-01-25', '2023-01-28', '2023-02-03', 'technical interview was hard', '1') RETURNING *'
 jobController.addJob = (req, res, next) => {
+  console.log(req.body);
   const {
     status,
     company,
