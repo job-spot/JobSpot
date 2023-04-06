@@ -4,8 +4,6 @@ import styles from '../styles/Applications.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function Applications({ userId }) {
-  //! hard coded - need to replace user_id
-  console.log('from app', userId);
   const [formData, setFormData] = useState({});
   const handleFormSubmit = (e) => {
     e.preventDefault();

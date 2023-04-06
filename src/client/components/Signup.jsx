@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useInput } from '../Hooks';
 import styles from '../styles/Login.module.css';
-import { useNavigate } from 'react-router-dom';
 
 const Signup = (props) => {
   //--------------------------STATES OF SIGNING UP -----------------------------
   const [username, [setUsername, userNameOnChange]] = useInput('');
   const [password, [setPassword, passwordOnChange]] = useInput('');
   const [errorMessage, setErrorMessage] = useState(null);
-  //const [userId, setUserId] = useState(null);
-  const navigate = useNavigate();
 
   //----------------------------FORM SUMISSION---------------------------------
   const handleFormSubmit = (e) => {
@@ -27,14 +24,8 @@ const Signup = (props) => {
       .then((res) => {
         //if the response obj has a user_id property
         if (res.hasOwnProperty('user_id')) {
-          //console.log(res.user_id);
-          //update userId in state?
-          console.log();
           props.setUserId(res.user_id);
-
-          //navigate to main dashboard
           props.setRendered('signedIndashboard');
-          //navigate('/job');
         } else {
           setErrorMessage(res);
           setUsername('');

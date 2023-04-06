@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/dashboard.module.css';
 
 function AppTable({ userId }) {
-  console.log('userId');
   const [allJobs, setAllJobs] = useState([]);
   const headers = [
     'Status',
@@ -20,7 +19,9 @@ function AppTable({ userId }) {
     const getData = () => {
       fetch(`http://localhost:3333/api/job/${userId}`)
         .then((response) => response.json())
-        .then((data) => setAllJobs(data))
+        .then((data) => {
+          setAllJobs(data);
+        })
         .catch((error) => console.log('error in getting application: ', error));
     };
     getData();
@@ -55,7 +56,7 @@ function AppTable({ userId }) {
       .catch((error) => console.log('error in updating application: ', error));
   };
 
-  return (
+  return allJobs.length ? (
     <div className={styles.outer}>
       <div className={styles.wrapper}>
         <table className={styles.table}>
@@ -105,6 +106,13 @@ function AppTable({ userId }) {
         </table>
       </div>
     </div>
+  ) : (
+    // if user does not have any jobs saved, render this message
+    <p>
+      You have no saved applications!
+      <br />
+      Go add your applications to view your dashboard!
+    </p>
   );
 }
 

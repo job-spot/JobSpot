@@ -1,19 +1,16 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import logo from '../assets/JOB-SPOT.png';
 import MainDashboard from './components/MainDashboard';
 import './styles.module.css';
 import styles from './styles/App.module.css';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
-import SignedInDash from './components/SignedInDashboard';
+import SignedInDashboard from './components/SignedInDashboard';
 
 function App() {
   const [rendered, setRendered] = useState('dashboard');
-  const [savedApplications, setSavedApplications] = useState([]);
   const [userId, setUserId] = useState(null);
-  console.log(rendered);
 
   const render = () => {
     if (rendered === 'signup') {
@@ -24,7 +21,7 @@ function App() {
       return <MainDashboard />;
     } else if (rendered === 'signedIndashboard') {
       return (
-        <SignedInDash
+        <SignedInDashboard
           userId={userId}
           setUserId={setUserId}
           setRendered={setRendered}

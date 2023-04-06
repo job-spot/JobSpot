@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { useInput } from '../Hooks';
 import styles from '../styles/Login.module.css';
-import { useNavigate } from 'react-router-dom';
 
 const Signin = (props) => {
   //--------------------------STATES OF LOGGING IN -----------------------------
   const [username, [setUsername, userNameOnChange]] = useInput('');
   const [password, [setPassword, passwordOnChange]] = useInput('');
   const [errorMessage, setErrorMessage] = useState(null);
-  //const [userId, setUserId] = useState(null);
-  const navigate = useNavigate();
 
   //----------------------------FORM SUMISSION---------------------------------
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('submit');
     fetch('http://localhost:3333/auth/signin', {
       method: 'POST',
       headers: {
