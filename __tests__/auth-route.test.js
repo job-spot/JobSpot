@@ -1,4 +1,7 @@
-import request from 'supertest';
+require = require('esm')(module /*, options*/);
+const request = require('supertest');
+
+//import request from 'supertest';
 import express from 'express';
 import { authRouter } from './routes/auth.js';
 
